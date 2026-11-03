@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сотвори себя — школа живописи и арт-терапии Татьяны Шам</title>
+<meta name="description" content="Международная школа творчества Татьяны Шам. Учим рисовать с нуля взрослых и детей с 2000 года: живопись, графика, барельеф, арт-терапия. Новосибирск, Оренбург, Киров, Саратов и онлайн.">
+<meta property="og:title" content="Сотвори себя — школа Татьяны Шам">
+<meta property="og:description" content="Не умеете рисовать? За три часа напишете свою первую картину.">
+<meta property="og:image" content="../img/h01.webp">
+<meta name="theme-color" content="#1E2FD6">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231E2FD6'/%3E%3Cpath d='M14 44c10-4 14-22 26-24 6-1 10 3 10 3-9 0-11 9-17 16-5 6-12 7-19 5z' fill='%23FFC21A'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@1,400;1,500&family=Geologica:wght@300..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ultra:#1E2FD6;
+  --ultra-deep:#0D1466;
+  --white:#F6F6F3;
+  --cadmium:#FFC21A;
+  --ink:#16141D;
+  --wall:#EDEDE8;
+  --muted:rgba(22,20,29,.62);
+  --sans:"Geologica",system-ui,sans-serif;
+  --serif:"Alegreya",Georgia,serif;
+  --gut:clamp(16px,3.2vw,48px);
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-x:clip;-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:340;font-size:clamp(16px,1.05vw + 10px,19px);line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit}
+::selection{background:var(--cadmium);color:var(--ink)}
+:focus-visible{outline:3px solid var(--cadmium);outline-offset:3px;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* зерно поверх всего — как фактура грунта */
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:90;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- шапка ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px var(--gut);color:var(--white);transition:transform .5s var(--ease),background .4s,color .4s}
+.nav.is-hidden{transform:translateY(-110%)}
+.nav.is-solid{background:rgba(246,246,243,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;font-size:17px;letter-spacing:-.01em;line-height:1}
+.brand svg{width:30px;height:30px;flex:none}
+.brand small{display:block;font-weight:340;font-size:12px;opacity:.7;margin-top:3px;letter-spacing:0}
+.nav__links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:15px}
+.nav__links a{text-decoration:none;opacity:.85;transition:opacity .2s}
+.nav__links a:hover{opacity:1;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:1px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;text-decoration:none;font-weight:600;border-radius:999px;padding:14px 26px;background:var(--cadmium);color:var(--ink);font-size:16px;line-height:1;transition:transform .35s var(--ease),background .25s}
+.btn:hover{transform:translateY(-2px) rotate(-1.5deg)}
+.btn--sm{padding:11px 20px;font-size:15px}
+.nav__burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
+.nav__burger span{display:block;width:24px;height:2px;background:currentColor;margin:5px 0;transition:transform .3s}
+@media (max-width:980px){
+  .nav__links{display:none}
+  .nav__burger{display:block}
+  .nav.is-open .nav__links{display:flex;position:fixed;inset:0;flex-direction:column;justify-content:center;gap:18px;padding:var(--gut);background:var(--ultra);color:var(--white);font-size:34px;font-weight:600;letter-spacing:-.02em;z-index:-1}
+  .nav.is-open{color:var(--white);background:transparent}
+  .nav.is-open .nav__burger span:first-child{transform:translateY(3.5px) rotate(45deg)}
+  .nav.is-open .nav__burger span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+}
+.nav__right{display:flex;align-items:center;gap:14px}
+@media (max-width:600px){.brand small{display:none}}
+
+/* ---------- первый экран: холст, который надо расписать ---------- */
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;background:var(--ultra);color:var(--white);overflow:hidden;isolation:isolate}
+.hero__under{position:absolute;inset:0;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);z-index:0}
+.hero__under img{width:100%;height:100%;object-fit:cover}
+.hero__under .w2{grid-column:span 2}
+.hero__under .h2{grid-row:span 2}
+@media (max-width:760px){.hero__under{grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(5,1fr)}.hero__under .hide-m{display:none}}
+.hero__paint{position:absolute;inset:0;width:100%;height:100%;z-index:1;touch-action:pan-y;cursor:none}
+.hero__copy{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(20px,4vh,48px);z-index:2;pointer-events:none;color:var(--cadmium)}
+.hero__title{margin:0;font-weight:800;font-size:clamp(76px,18.5vw,330px);line-height:.8;letter-spacing:-.055em;margin-left:-.04em}
+.hero__title span{display:block}
+.hero__title span:last-child{padding-left:.9em}
+.hero__meta{position:absolute;z-index:2;right:var(--gut);top:clamp(96px,16vh,170px);max-width:330px;font-size:16px;line-height:1.45;color:var(--white);pointer-events:none}
+.hero__meta p{margin:0 0 18px}
+.hero__hint{display:flex;align-items:center;gap:12px;font-size:14px;opacity:.85;transition:opacity .6s}
+.hero__hint svg{flex:none}
+.hero.is-touched .hero__hint{opacity:0}
+.brush{position:fixed;left:0;top:0;width:var(--bs,96px);height:var(--bs,96px);margin:calc(var(--bs,96px)/-2) 0 0 calc(var(--bs,96px)/-2);border:1.5px solid var(--cadmium);border-radius:50%;pointer-events:none;z-index:60;opacity:0;transform:translate3d(-200px,-200px,0) rotate(18deg) scaleX(.3);transition:opacity .3s}
+.brush.is-on{opacity:1}
+@media (hover:none){.brush{display:none}}
+@media (max-width:760px){.hero__meta{top:auto;bottom:calc(clamp(76px,18.5vw,330px)*1.75 + 40px);left:var(--gut);right:auto;max-width:280px;font-size:15px}}
+
+/* ---------- общие секции ---------- */
+section{position:relative}
+.wrap{padding:0 var(--gut)}
+.h2{font-weight:700;font-size:clamp(40px,6.4vw,104px);line-height:.95;letter-spacing:-.045em;margin:0}
+.lead{font-size:clamp(19px,1.5vw + 8px,26px);line-height:1.4;font-weight:340;max-width:34ch;margin:0}
+.small{font-size:15px;color:var(--muted)}
+
+/* ---------- манифест + до/после ---------- */
+.intro{background:var(--ultra-deep);color:var(--white);padding:clamp(90px,14vh,170px) 0 clamp(90px,14vh,170px)}
+.intro__grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(40px,6vw,110px);align-items:center}
+.manifest{font-weight:500;font-size:clamp(28px,3.3vw,56px);line-height:1.12;letter-spacing:-.03em;margin:0}
+.manifest .w{opacity:.22;transition:none}
+.manifest-note{margin-top:36px;max-width:46ch;font-size:17px;opacity:.75}
+@media (max-width:900px){.intro__grid{grid-template-columns:1fr}}
+
+.ba{position:relative;aspect-ratio:3/4.15;max-width:520px;width:100%;justify-self:end;user-select:none;-webkit-user-select:none;background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba__before{clip-path:inset(0 calc(100% - var(--p,50%)) 0 0)}
+.ba__line{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;margin-left:-1px;background:var(--cadmium);pointer-events:none}
+.ba__knob{position:absolute;top:50%;left:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:var(--cadmium);display:grid;place-items:center;color:var(--ink)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba__tag{position:absolute;bottom:14px;font-size:14px;font-weight:600;padding:6px 12px;border-radius:999px;background:var(--ink);color:var(--white);pointer-events:none}
+.ba__tag--l{left:14px}.ba__tag--r{right:14px;background:var(--cadmium);color:var(--ink)}
+.ba-cap{max-width:520px;justify-self:end;width:100%;margin-top:16px;font-size:15px;opacity:.75}
+.ba-col{display:grid}
+
+/* ---------- направления ---------- */
+.dirs{padding:clamp(90px,14vh,170px) 0 clamp(70px,10vh,120px)}
+.dirs__head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(40px,6vh,80px)}
+@media (max-width:900px){.dirs__head{grid-template-columns:1fr}}
+.dir{border-top:1.5px solid var(--ink)}
+.dir:last-child{border-bottom:1.5px solid var(--ink)}
+.dir__btn{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:20px;padding:clamp(18px,2.4vw,30px) 0;cursor:pointer}
+.dir__btn:focus-visible{outline:3px solid var(--ultra);outline-offset:4px}
+.dir__name{font-weight:600;font-size:clamp(26px,3.8vw,62px);line-height:1;letter-spacing:-.035em;transition:transform .5s var(--ease),color .3s}
+.dir__name em{font-family:var(--serif);font-weight:400;font-style:italic;letter-spacing:-.01em;font-size:.62em;color:var(--muted);margin-left:.4em;white-space:nowrap}
+.dir__btn:hover .dir__name{transform:translateX(14px);color:var(--ultra)}
+.dir__plus{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ink);position:relative;flex:none;transition:background .3s,transform .5s var(--ease)}
+.dir__plus::before,.dir__plus::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:1.5px;margin:-.75px 0 0 -9px;background:currentColor;transition:transform .4s var(--ease)}
+.dir__plus::after{transform:rotate(90deg)}
+.dir.is-open .dir__plus{background:var(--cadmium);border-color:var(--cadmium);transform:rotate(180deg)}
+.dir.is-open .dir__plus::after{transform:rotate(0)}
+.dir__panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s var(--ease)}
+.dir.is-open .dir__panel{grid-template-rows:1fr}
+.dir__inner{overflow:hidden}
+.dir__body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(24px,4vw,64px);padding:4px 0 clamp(26px,3vw,44px)}
+.dir__body p{margin:0 0 14px;max-width:48ch}
+.dir__imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dir__imgs img{width:100%;aspect-ratio:4/3.3;object-fit:cover;border-radius:4px}
+.dir__imgs img:nth-child(2){margin-top:36px}
+@media (max-width:760px){.dir__body{grid-template-columns:1fr}.dir__name em{display:block;margin:8px 0 0}}
+
+/* ---------- стена работ ---------- */
+.wall{background:var(--wall);overflow:hidden}
+.wall__head{padding:clamp(90px,13vh,150px) var(--gut) 40px;display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.wall__track{display:flex;align-items:center;gap:clamp(36px,4.5vw,80px);padding:20px var(--gut) clamp(90px,12vh,140px);width:max-content}
+.art{margin:0;flex:none}
+.art img{height:var(--h,52vh);width:auto;max-width:none;box-shadow:0 2px 3px rgba(0,0,0,.08),0 22px 40px -18px rgba(22,20,29,.45)}
+.art figcaption{margin-top:16px;font-size:14px;line-height:1.35;max-width:280px}
+.art figcaption b{display:block;font-weight:600;font-size:16px}
+.art:nth-child(3n+2){align-self:flex-start}
+.art:nth-child(3n){align-self:flex-end}
+@media (min-width:901px){
+  .wall{height:100vh;display:flex;flex-direction:column}
+  .wall__head{padding-top:clamp(84px,11vh,130px);padding-bottom:10px}
+  .wall__track{flex:1;padding-bottom:36px}
+  .art img{height:calc(var(--h,52vh) * .84)}
+}
+@media (max-width:900px){
+  .wall__track{overflow-x:auto;scroll-snap-type:x mandatory;width:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .wall__track::-webkit-scrollbar{display:none}
+  .art{scroll-snap-align:center}
+  .art img{height:var(--hm,46vh)}
+}
+
+/* ---------- форматы ---------- */
+.formats{padding:clamp(90px,14vh,170px) 0;background:var(--white)}
+.formats__grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.4fr);gap:clamp(40px,6vw,110px)}
+.formats__sticky{position:sticky;top:120px;align-self:start}
+.fmt{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,44px);padding:0 0 clamp(44px,6vw,80px);align-items:start}
+.fmt img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px}
+.fmt h3{font-weight:650;font-size:clamp(24px,2.2vw,34px);letter-spacing:-.03em;line-height:1.05;margin:0 0 14px}
+.fmt p{margin:0 0 10px}
+@media (max-width:900px){.formats__grid{grid-template-columns:1fr}.formats__sticky{position:static}}
+@media (max-width:600px){.fmt{grid-template-columns:1fr}}
+
+/* ---------- пленэры ---------- */
+.plein{background:var(--ink);color:var(--white);overflow:hidden;padding-bottom:clamp(80px,12vh,140px)}
+.plein__hero{position:relative;height:clamp(520px,92vh,980px);overflow:hidden}
+.plein__hero img{position:absolute;left:0;top:-12%;width:100%;height:124%;object-fit:cover;object-position:50% 40%}
+.plein__hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,20,29,0) 40%,rgba(22,20,29,.85) 100%)}
+.plein__copy{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(30px,6vh,70px);z-index:1;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+.plein__copy .lead{max-width:30ch}
+@media (max-width:760px){.plein__copy{grid-template-columns:1fr}}
+.places{display:flex;gap:0;white-space:nowrap;padding:clamp(40px,6vh,70px) 0;font-weight:700;font-size:clamp(44px,8vw,140px);letter-spacing:-.05em;line-height:1}
+.places__row{display:flex;align-items:center;flex:none;padding-right:.5em;gap:.5em;will-change:transform}
+.places__row svg{width:.42em;height:.42em;flex:none;color:var(--cadmium)}
+.places__row span:nth-child(4n+3){color:transparent;-webkit-text-stroke:1.5px var(--white)}
+.plein__strip{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:0 var(--gut)}
+.plein__strip img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px}
+.plein__strip img:nth-child(even){transform:translateY(40px)}
+@media (max-width:760px){.plein__strip{grid-template-columns:1fr 1fr}.plein__strip img:nth-child(n+5){display:none}}
+
+/* ---------- Татьяна ---------- */
+.founder{padding:clamp(100px,15vh,180px) 0;background:var(--ultra);color:var(--white);overflow:hidden}
+.founder__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(40px,6vw,110px);align-items:center}
+.founder__photos{position:relative;aspect-ratio:1/1.08}
+.founder__photos img{position:absolute;border-radius:4px;object-fit:cover;box-shadow:0 30px 60px -25px rgba(0,0,0,.6)}
+.founder__photos .p1{left:0;top:0;width:72%;height:76%}
+.founder__photos .p2{right:0;bottom:0;width:54%;height:52%;border:8px solid var(--ultra)}
+.founder__quote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,3.4vw,58px);line-height:1.1;letter-spacing:-.01em;margin:0 0 30px}
+.founder__bio{max-width:52ch;opacity:.88;margin:0 0 40px}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px;border-top:1.5px solid rgba(246,246,243,.35);padding-top:30px;margin:0}
+.facts div{margin:0}
+.facts dt{font-weight:700;font-size:clamp(38px,4vw,64px);letter-spacing:-.05em;line-height:1}
+.facts dd{margin:6px 0 0;font-size:15px;opacity:.8;max-width:24ch}
+@media (max-width:900px){.founder__grid{grid-template-columns:1fr}}
+
+/* ---------- отзывы ---------- */
+.voices{padding:clamp(100px,15vh,180px) 0;background:var(--white)}
+.voices__top{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(40px,6vh,70px)}
+.voices__stage{position:relative;min-height:clamp(260px,26vw,380px)}
+.voice{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;transition:opacity .6s,visibility .6s}
+.voice.is-on{opacity:1;visibility:visible}
+.voice blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(30px,4.2vw,72px);line-height:1.08;letter-spacing:-.015em;max-width:24ch}
+.voice figcaption{margin-top:28px;font-size:16px}
+.voice figcaption b{font-weight:600}
+.voices__ctrl{display:flex;align-items:center;gap:14px}
+.voices__ctrl button{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--ink);background:none;cursor:pointer;display:grid;place-items:center;transition:background .25s,color .25s}
+.voices__ctrl button:hover{background:var(--ink);color:var(--white)}
+.voices__count{font-variant-numeric:tabular-nums;font-size:15px;min-width:64px;text-align:center}
+@media (max-width:600px){.voices__stage{min-height:400px}}
+
+/* ---------- запись ---------- */
+.cta{background:var(--ultra-deep);color:var(--white);padding:clamp(100px,15vh,180px) 0 0;overflow:hidden}
+.cta__grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(40px,6vw,110px)}
+.cta__title{font-weight:800;font-size:clamp(46px,7vw,120px);line-height:.92;letter-spacing:-.05em;margin:0 0 28px}
+.form{display:grid;gap:14px;align-content:start}
+.field{display:grid;gap:6px}
+.field label{font-size:14px;opacity:.75}
+.field input,.field select{appearance:none;-webkit-appearance:none;width:100%;font:inherit;font-size:17px;color:var(--white);background:rgba(246,246,243,.07);border:1.5px solid rgba(246,246,243,.28);border-radius:12px;padding:15px 16px;transition:border-color .2s,background .2s}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23F6F6F3' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.field select option{color:var(--ink)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--cadmium);background:rgba(246,246,243,.1)}
+.form .btn{margin-top:8px;padding:18px 26px;font-size:17px}
+.form__note{font-size:13px;opacity:.6;margin:4px 0 0}
+.contacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:clamp(60px,9vh,100px);padding-top:30px;border-top:1.5px solid rgba(246,246,243,.25)}
+.contacts h3{font-size:14px;font-weight:400;opacity:.65;margin:0 0 8px}
+.contacts p{margin:0 0 4px}
+.contacts a{text-decoration:none}
+.contacts a:hover{text-decoration:underline;text-underline-offset:4px}
+@media (max-width:900px){.cta__grid{grid-template-columns:1fr}.contacts{grid-template-columns:1fr}}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;opacity:.55;padding:40px var(--gut) 30px}
+.giant{font-weight:800;font-size:23.6vw;letter-spacing:-.06em;line-height:.74;white-space:nowrap;margin:clamp(50px,8vh,90px) 0 0 -.03em;color:var(--ultra);user-select:none}
+
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="Сотвори себя, на главную">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="currentColor" opacity=".14"/><path d="M12 46c11-4 15-24 28-26 7-1 12 4 12 4-10 0-12 10-19 17-6 6-13 7-21 5z" fill="#FFC21A"/></svg>
+    <span>Сотвори себя<small>школа Татьяны Шам</small></span>
+  </a>
+  <ul class="nav__links" id="menu">
+    <li><a href="#dirs">Направления</a></li>
+    <li><a href="#wall">Работы учеников</a></li>
+    <li><a href="#plein">Пленэры</a></li>
+    <li><a href="#founder">Татьяна Шам</a></li>
+    <li><a href="#voices">Отзывы</a></li>
+  </ul>
+  <div class="nav__right">
+    <a class="btn btn--sm" href="#signup">Записаться</a>
+    <button class="nav__burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- 1. Холст -->
+<section class="hero" id="hero" aria-label="Сотвори себя">
+  <div class="hero__under" aria-hidden="true">
+    <img class="w2" src="../img/h01.webp" alt="">
+    <img class="h2" src="../img/h06.webp" alt="">
+    <img src="../img/h15.webp" alt="">
+    <img class="hide-m" src="../img/h04.webp" alt="">
+    <img class="w2" src="../img/h02.webp" alt="">
+    <img class="h2" src="../img/h10.webp" alt="">
+    <img src="../img/h13.webp" alt="">
+    <img class="w2" src="../img/h09.webp" alt="">
+    <img class="hide-m" src="../img/h18.webp" alt="">
+    <img src="../img/h05.webp" alt="">
+    <img class="hide-m" src="../img/h16.webp" alt="">
+    <img class="hide-m" src="../img/h08.webp" alt="">
+    <img class="hide-m" src="../img/h12.webp" alt="">
+  </div>
+  <canvas class="hero__paint" id="paint" aria-hidden="true"></canvas>
+  <div class="hero__meta">
+    <p>Школа живописи, графики и арт-терапии Татьяны Шам. Учим взрослых и детей с нуля, с 2000 года.</p>
+    <div class="hero__hint">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true"><path d="M5 27c6-1 9-9 15-14 4-3 9-4 11-3-1 3-4 7-8 10-5 4-11 6-18 7z" fill="#FFC21A"/><path d="M5 27c1-3 3-5 6-6" stroke="#F6F6F3" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Проведите по холсту. Под краской — работы наших учеников.</span>
+    </div>
+  </div>
+  <div class="hero__copy">
+    <h1 class="hero__title"><span>Сотвори</span><span>себя</span></h1>
+  </div>
+</section>
+<div class="brush" id="brush" aria-hidden="true"></div>
+
+<!-- 2. Манифест + до/после -->
+<section class="intro">
+  <div class="wrap intro__grid">
+    <div>
+      <p class="manifest" id="manifest">Чтобы начать, не нужны ни талант, ни художественная школа. Нужно только желание. Остальное мы покажем шаг за шагом — и вы удивитесь, на что на самом деле способны.</p>
+      <p class="manifest-note">Наши ученики приходят с нуля, а потом пишут маслом, продают картины, участвуют в выставках и поступают на худграф.</p>
+    </div>
+    <div class="ba-col">
+      <div class="ba" id="ba" style="--p:50%">
+        <img src="../img/ba-after.webp" alt="Портрет после первого урока: объёмные волосы, глаза с бликами, проработанные черты" loading="lazy">
+        <img class="ba__before" src="../img/ba-before.webp" alt="Портрет до урока: схематичное лицо из нескольких линий" loading="lazy">
+        <span class="ba__line"></span>
+        <span class="ba__tag ba__tag--l">До</span>
+        <span class="ba__tag ba__tag--r">После одного урока</span>
+        <label class="sr" for="baRange">Сравнить рисунок до и после урока</label>
+        <input id="baRange" type="range" min="0" max="100" value="50">
+      </div>
+      <p class="ba-cap">Один и тот же ученик, один вечер разницы. Потяните, чтобы сравнить.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Направления -->
+<section class="dirs" id="dirs">
+  <div class="wrap">
+    <div class="dirs__head">
+      <h2 class="h2">Чему можно научиться</h2>
+      <p class="lead">В группе каждый пишет свою картину, в своём стиле и со своей скоростью. Преподаватель подходит к каждому.</p>
+    </div>
+
+    <div class="dirs__list" id="dirList">
+      <div class="dir is-open">
+        <button class="dir__btn" aria-expanded="true"><span class="dir__name">Правополушарное рисование<em>авторский курс</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>Метод Татьяны Шам: техника рисунка и живописи плюс образное мышление. Учитесь переносить на холст то, что чувствуете и видите в голове.</p>
+            <p>Пробуете все краски, карандаши и пастель. Интуитивная живопись, реализм, импрессионизм, иллюстрация, китайская живопись.</p>
+            <p class="small">Для души и для новой профессии — вплоть до своей студии или галереи.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/h03.webp" alt="Горная долина с рекой, гуашь" loading="lazy"><img src="../img/h08.webp" alt="Закат над зимним лесом" loading="lazy"></div>
+        </div></div></div>
+      </div>
+
+      <div class="dir">
+        <button class="dir__btn" aria-expanded="false"><span class="dir__name">Мастер-класс за 3 часа<em>с нуля, с картиной домой</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>«Почувствуй себя художником». Пейзаж гуашью, первый пейзаж маслом, Ван Гог, рисунок карандашом.</p>
+            <p>Снимаете стресс, пишете очень красивую картину и забираете её с собой. Одинаковых пейзажей у нас не бывает.</p>
+            <p class="small">Можно подарить сертификатом.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/h18.webp" alt="Работы учеников на мастер-классе по Ван Гогу" loading="lazy"><img src="../img/g-orenburg.webp" alt="Осенний парк под дождём, масло" loading="lazy"></div>
+        </div></div></div>
+      </div>
+
+      <div class="dir">
+        <button class="dir__btn" aria-expanded="false"><span class="dir__name">Графика и портрет<em>карандаш, пастель, уголь</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>Карандаш, акварельные карандаши, пастель, уголь, сангина. От первых штрихов до портрета, в котором узнают человека.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/g-voroshilova.webp" alt="Женский портрет карандашом" loading="lazy"><img src="../img/g-egor.webp" alt="Портрет Эйнштейна, графика" loading="lazy"></div>
+        </div></div></div>
+      </div>
+
+      <div class="dir">
+        <button class="dir__btn" aria-expanded="false"><span class="dir__name">Живопись маслом и акрилом<em>свои картины</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>Пишете собственные картины под руководством наставника: композиция, цвет, фактура. Каждая работа — ваша собственная.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/h09.webp" alt="Пруд с маками, масло" loading="lazy"><img src="../img/h05.webp" alt="Сирень в вазе, масло" loading="lazy"></div>
+        </div></div></div>
+      </div>
+
+      <div class="dir">
+        <button class="dir__btn" aria-expanded="false"><span class="dir__name">Барельеф и роспись стен<em>3D-картины</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>Скульптурная живопись, объёмные картины, барельефы и роспись стен. Один из выпускников после курса сам преподаёт барельеф в колледже.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/g-relief-africa.webp" alt="Барельеф: профиль африканки" loading="lazy"><img src="../img/r1.webp" alt="Барельеф: морские рыбы и медузы" loading="lazy"></div>
+        </div></div></div>
+      </div>
+
+      <div class="dir">
+        <button class="dir__btn" aria-expanded="false"><span class="dir__name">Валяние из шерсти<em>фильц, фелтинг, нунофелтинг</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>Шерстяная акварель, картины и предметы для дома из шерсти: панно, подушки, светильники.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/g-maki-sherst.webp" alt="Маки, шерстяная акварель" loading="lazy"><img src="../img/f1.webp" alt="Подушка с цветком, валяние" loading="lazy"></div>
+        </div></div></div>
+      </div>
+
+      <div class="dir">
+        <button class="dir__btn" aria-expanded="false"><span class="dir__name">Арт-терапия<em>год обучения, диплом</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>Онлайн-курс «Профессия арт-терапевт» с дипломом арт-терапевта трансформационной живописи. Живые занятия, индивидуальный подход, практика с клиентами с первого месяца.</p>
+            <p>Не обязательно потом работать арт-терапевтом: многие проходят курс ради себя.</p>
+            <p class="small">Курс прошли больше 15 тысяч человек.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/h13.webp" alt="Мандала, интуитивная живопись" loading="lazy"><img src="../img/t-heart.webp" alt="Татьяна Шам ведёт онлайн-занятие" loading="lazy"></div>
+        </div></div></div>
+      </div>
+
+      <div class="dir">
+        <button class="dir__btn" aria-expanded="false"><span class="dir__name">Дети от 3 лет<em>и подростки</em></span><span class="dir__plus" aria-hidden="true"></span></button>
+        <div class="dir__panel"><div class="dir__inner"><div class="dir__body">
+          <div>
+            <p>Возвращаем детям желание рисовать — даже тем, у кого его отбили в художке. Можно заниматься всей семьёй.</p>
+          </div>
+          <div class="dir__imgs"><img src="../img/k4.webp" alt="Девочка с картиной: радуга и котики" loading="lazy"><img src="../img/k2.webp" alt="Девочка с портретом собаки" loading="lazy"></div>
+        </div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Стена работ -->
+<section class="wall" id="wall">
+  <div class="wall__head">
+    <h2 class="h2">Это нарисовали<br>не художники</h2>
+    <p class="lead" style="max-width:28ch">Всё ниже написали ученики школы. Большинство пришли, не умея рисовать.</p>
+  </div>
+  <div class="wall__track" id="wallTrack">
+    <figure class="art" style="--h:50vh"><img src="../img/g-klimova.webp" alt="Девушка на фоне луны" loading="lazy"><figcaption><b>Русалка</b>Наталья Климова</figcaption></figure>
+    <figure class="art" style="--h:40vh"><img src="../img/g-bykova.webp" alt="Пруд с маками" loading="lazy"><figcaption><b>Маки</b>Натали Быкова</figcaption></figure>
+    <figure class="art" style="--h:56vh"><img src="../img/g-voroshilova.webp" alt="Портрет девушки карандашом" loading="lazy"><figcaption><b>Портрет</b>Татьяна Ворошилова, карандаш</figcaption></figure>
+    <figure class="art" style="--h:44vh"><img src="../img/g-kukeeva.webp" alt="Котёнок на фоне гор" loading="lazy"><figcaption><b>Котёнок</b>Кукеева</figcaption></figure>
+    <figure class="art" style="--h:38vh"><img src="../img/g-rachaev.webp" alt="Дракон в горах" loading="lazy"><figcaption><b>Дракон</b>Рачаев</figcaption></figure>
+    <figure class="art" style="--h:54vh"><img src="../img/g-egor.webp" alt="Эйнштейн показывает язык" loading="lazy"><figcaption><b>Эйнштейн</b>Егор, карандаш</figcaption></figure>
+    <figure class="art" style="--h:48vh"><img src="../img/g-relief-africa.webp" alt="Барельеф, профиль женщины" loading="lazy"><figcaption><b>Африканка</b>барельеф</figcaption></figure>
+    <figure class="art" style="--h:52vh"><img src="../img/g-wolf.webp" alt="Разноцветный волк" loading="lazy"><figcaption><b>Волк</b>акрил</figcaption></figure>
+    <figure class="art" style="--h:40vh"><img src="../img/g-scherbak-osen.webp" alt="Золотая осенняя поляна" loading="lazy"><figcaption><b>Осень</b>Лена Щербак</figcaption></figure>
+    <figure class="art" style="--h:52vh"><img src="../img/g-khilkova.webp" alt="Мать с младенцем, сангина" loading="lazy"><figcaption><b>Мать и дитя</b>Хилькова, сангина</figcaption></figure>
+    <figure class="art" style="--h:46vh"><img src="../img/g-lilac.webp" alt="Сирень в стеклянной вазе" loading="lazy"><figcaption><b>Сирень</b>масло</figcaption></figure>
+    <figure class="art" style="--h:54vh"><img src="../img/g-matveeva.webp" alt="Чёрный кот у фонаря" loading="lazy"><figcaption><b>Кот</b>Матвеева, уголь</figcaption></figure>
+    <figure class="art" style="--h:42vh"><img src="../img/g-orenburg.webp" alt="Осенний парк под дождём" loading="lazy"><figcaption><b>Дождь в парке</b>мастер-класс в Оренбурге, масло</figcaption></figure>
+    <figure class="art" style="--h:52vh"><img src="../img/g-scherbak-pastel.webp" alt="Девушка в очках среди осенних листьев" loading="lazy"><figcaption><b>Осенний портрет</b>Щербак, пастель</figcaption></figure>
+    <figure class="art" style="--h:50vh"><img src="../img/g-relief-ship.webp" alt="Барельеф, парусник" loading="lazy"><figcaption><b>Парусник</b>барельеф</figcaption></figure>
+    <figure class="art" style="--h:46vh"><img src="../img/g-cornflowers.webp" alt="Васильки в вазе" loading="lazy"><figcaption><b>Васильки</b>масло</figcaption></figure>
+    <figure class="art" style="--h:54vh"><img src="../img/g-lilia.webp" alt="Водопад и сосны, графика" loading="lazy"><figcaption><b>Водопад</b>Лилия, карандаш</figcaption></figure>
+  </div>
+</section>
+
+<!-- 5. Форматы -->
+<section class="formats" id="formats">
+  <div class="wrap formats__grid">
+    <div class="formats__sticky">
+      <h2 class="h2">Как учиться</h2>
+      <p class="lead" style="margin-top:24px">Вживую в студиях, у вас дома или онлайн из любой точки мира. После каждого курса — свидетельство школы.</p>
+    </div>
+    <div>
+      <article class="fmt">
+        <img src="../img/s-class.webp" alt="Взрослые пишут картины в студии" loading="lazy">
+        <div><h3>Группа в студии</h3><p>Небольшая группа, но у каждого своя картина. Учим видеть как художник и выражать идеи любыми материалами.</p><p class="small">Можно приходить вместе с детьми.</p></div>
+      </article>
+      <article class="fmt">
+        <img src="../img/s-oleg.webp" alt="Мужчина пишет горный пейзаж" loading="lazy">
+        <div><h3>Индивидуально</h3><p>У нас или с выездом к вам. Программу собираем под ваши цели и сочетаем технику живописи с арт-терапией.</p><p class="small">Работаем с людьми после инсульта, с ДЦП и с вернувшимися с СВО.</p></div>
+      </article>
+      <article class="fmt">
+        <img src="../img/t-heart.webp" alt="Татьяна Шам перед камерой во время онлайн-урока" loading="lazy">
+        <div><h3>Онлайн</h3><p>Живые видеозвонки один на один и в мини-группах, авторские курсы в записи. Всё показываем и объясняем подробно.</p></div>
+      </article>
+      <article class="fmt">
+        <img src="../img/s-group.webp" alt="Ученики мастер-класса показывают свои рисунки" loading="lazy">
+        <div><h3>Мастер-класс к вам</h3><p>Корпоративы, арт-вечеринки, семейные праздники и выездные курсы в вашем городе.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 6. Пленэры -->
+<section class="plein" id="plein">
+  <div class="plein__hero">
+    <img id="pleinImg" src="../img/a1.webp" alt="Ученица школы на пленэре в Горном Алтае, ветер развевает волосы" loading="lazy">
+    <div class="plein__copy">
+      <h2 class="h2">Пленэры<br>и арт-туры</h2>
+      <p class="lead">Регулярно едем писать с натуры туда, где у природы свои краски. Тренинги, походы и картины, которые потом не стыдно повесить дома.</p>
+    </div>
+  </div>
+  <div class="places" aria-label="Горный Алтай, Уральские горы, Волга, Тибет, Испания, Франция">
+    <div class="places__row" aria-hidden="true"></div>
+  </div>
+  <div class="plein__strip">
+    <img src="../img/a3.webp" alt="Рисуем у горного озера" loading="lazy">
+    <img src="../img/a5.webp" alt="Этюд в долине с лошадьми" loading="lazy">
+    <img src="../img/a7.webp" alt="Ученица с этюдником в горах" loading="lazy">
+    <img src="../img/a8.webp" alt="Группа у водопада" loading="lazy">
+    <img src="../img/a4.webp" alt="Красные скалы Алтая" loading="lazy">
+    <img src="../img/a6.webp" alt="Группа с картинами на вершине" loading="lazy">
+  </div>
+</section>
+
+<!-- 7. Татьяна Шам -->
+<section class="founder" id="founder">
+  <div class="wrap founder__grid">
+    <div class="founder__photos">
+      <img class="p1" src="../img/t-expo.webp" alt="Татьяна Шам на выставке работ учеников" loading="lazy" style="object-position:78% 50%">
+      <img class="p2" src="../img/t-heart.webp" alt="Татьяна Шам в студии" loading="lazy">
+    </div>
+    <div>
+      <p class="founder__quote">«Ты — уже совершенство. Когда понимаешь, что способен изменить свою жизнь, это уже половина пути».</p>
+      <p class="founder__bio">Татьяна Николаевна Шам — художник, педагог и арт-терапевт. В 2000 году основала в Новосибирске школу «Сотвори себя» и придумала метод правополушарной интуитивной живописи. Вела мастер-классы на телеканале ОТС, возит учеников на Алтай и проводит личные консультации.</p>
+      <dl class="facts">
+        <div><dt data-count="203000">203 000</dt><dd>человек прошли обучение по методу Татьяны</dd></div>
+        <div><dt data-count="26">26</dt><dd>лет школе: с 2000 года</dd></div>
+        <div><dt data-count="15000">15 000</dt><dd>выпускников курса арт-терапии</dd></div>
+        <div><dt>4 + онлайн</dt><dd>Новосибирск, Оренбург, Киров, Саратов и весь мир</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Отзывы -->
+<section class="voices" id="voices">
+  <div class="wrap">
+    <div class="voices__top">
+      <h2 class="h2">Что пишут ученики</h2>
+      <div class="voices__ctrl">
+        <button id="vPrev" aria-label="Предыдущий отзыв"><svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M7 1L1 7l6 6M1 7h16" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <span class="voices__count" id="vCount" aria-live="polite">1 / 9</span>
+        <button id="vNext" aria-label="Следующий отзыв"><svg width="18" height="14" viewBox="0 0 18 14" fill="none"><path d="M11 1l6 6-6 6M17 7H1" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      </div>
+    </div>
+    <div class="voices__stage" id="vStage">
+      <figure class="voice is-on"><blockquote>Татьяна! Моя дочь поступила на худграф! Вы сотворили чудо!</blockquote><figcaption><b>Ульяна Саранык</b>, 2023</figcaption></figure>
+      <figure class="voice"><blockquote>Никогда не держала красок в руках, а получились такие шедевры. Всего пять часов — и такое!</blockquote><figcaption><b>Снежина А.</b>, мастер-класс</figcaption></figure>
+      <figure class="voice"><blockquote>Как вы мне говорили, пошёл участвовать в выставках. В итоге меня пригласили вести барельеф в колледже.</blockquote><figcaption><b>Сергей Искаков</b>, курс «Барельеф»</figcaption></figure>
+      <figure class="voice"><blockquote>Сын снова с удовольствием рисует. Думала, желание рисовать ему напрочь отбили в художке.</blockquote><figcaption><b>Роберта</b>, мама ученика</figcaption></figure>
+      <figure class="voice"><blockquote>Сейчас каждое занятие для меня как праздник. С вами даже сложное оказывается простым.</blockquote><figcaption><b>Лара Батрина</b>, художник</figcaption></figure>
+      <figure class="voice"><blockquote>21 день в школе: пейзажи, портреты, графика, масло и акварель. Никто не поверил, что до курса я не умел рисовать.</blockquote><figcaption><b>Олег</b></figcaption></figure>
+      <figure class="voice"><blockquote>Рисование изменило всё. Казалось бы, три часа в неделю. Но я ждала их.</blockquote><figcaption><b>Инна</b>, Оренбург</figcaption></figure>
+      <figure class="voice"><blockquote>Помогаете таким неумехам, как я, исполнить мечту детства.</blockquote><figcaption><b>Раиса Дмитриевна</b></figcaption></figure>
+      <figure class="voice"><blockquote>Я профессиональный художник, у меня были выставки в Сибири и в Москве. Метод правополушарного рисования — поразительный.</blockquote><figcaption><b>Александр</b>, художник</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Запись -->
+<section class="cta" id="signup">
+  <div class="wrap">
+    <div class="cta__grid">
+      <div>
+        <h2 class="cta__title">Три часа —<br>и ваша первая картина</h2>
+        <p class="lead">Оставьте имя и город: подберём группу, мастер-класс или онлайн-формат. Ответим в WhatsApp.</p>
+        <p class="small" style="color:rgba(246,246,243,.7);margin-top:20px">Подарочный сертификат на любое занятие оформим на любой повод.</p>
+      </div>
+      <form class="form" id="form" novalidate>
+        <div class="field"><label for="fName">Как вас зовут</label><input id="fName" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="fCity">Где удобно заниматься</label>
+          <select id="fCity" name="city">
+            <option>Новосибирск, центр</option>
+            <option>Новосибирск, Академгородок</option>
+            <option>Оренбург</option>
+            <option>Киров</option>
+            <option>Саратов</option>
+            <option>Онлайн</option>
+          </select>
+        </div>
+        <div class="field"><label for="fWhat">Что интересно</label>
+          <select id="fWhat" name="what">
+            <option>Мастер-класс для начала</option>
+            <option>Курс рисования и живописи</option>
+            <option>Занятия для ребёнка</option>
+            <option>Арт-терапия</option>
+            <option>Пленэр или арт-тур</option>
+            <option>Подарочный сертификат</option>
+          </select>
+        </div>
+        <button class="btn" type="submit">Написать в WhatsApp</button>
+        <p class="form__note">Откроется чат со школой с уже готовым сообщением.</p>
+      </form>
+    </div>
+
+    <div class="contacts">
+      <div><h3>Телефон</h3><p><a href="tel:+79537788359">+7 953 778-83-59</a></p></div>
+      <div><h3>WhatsApp</h3><p><a href="https://wa.me/79833088883" target="_blank" rel="noopener">+7 983 308-88-83</a></p></div>
+      <div><h3>Почта</h3><p><a href="mailto:sotvori-sebya@mail.ru">sotvori-sebya@mail.ru</a></p></div>
+    </div>
+  </div>
+  <div class="giant" aria-hidden="true">сотвори</div>
+  <div class="foot"><span>© 2000–2026 Международная школа творчества Татьяны Шам «Сотвори себя»</span><span>Новосибирск, Оренбург, Киров, Саратов и онлайн</span></div>
+</section>
+</main>
+
+<script src="../vendor/gsap.min.js"></script>
+<script src="../vendor/ScrollTrigger.min.js"></script>
+<script src="../vendor/lenis.min.js"></script>
+<script>
+(() => {
+  // ?motion=1 включает анимации даже при «Уменьшить движение» (запоминается), ?motion=0 сбрасывает
+  const q = new URLSearchParams(location.search);
+  try {
+    if (q.get('motion') === '1') localStorage.setItem('motion', '1');
+    if (q.get('motion') === '0') localStorage.removeItem('motion');
+  } catch (e) {}
+  let forced = false;
+  try { forced = localStorage.getItem('motion') === '1'; } catch (e) {}
+  const MOTION = forced || !matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const HAS_GSAP = !!window.gsap && !!window.ScrollTrigger;
+  if (MOTION && HAS_GSAP) document.documentElement.classList.add('js-motion');
+
+  /* ---------- холст на первом экране ---------- */
+  const hero = document.getElementById('hero');
+  const cv = document.getElementById('paint');
+  const ctx = cv.getContext('2d');
+  const brushEl = document.getElementById('brush');
+  const ULTRA = '#1E2FD6';
+  const ANGLE = -72 * Math.PI / 180;
+  let W = 0, H = 0, dpr = 1, brushW = 100;
+
+  // фактура грунта: тайл с шумом, чтобы ультрамарин выглядел краской, а не заливкой
+  const tile = document.createElement('canvas');
+  tile.width = tile.height = 180;
+  (() => {
+    const t = tile.getContext('2d');
+    t.fillStyle = ULTRA; t.fillRect(0, 0, 180, 180);
+    for (let i = 0; i < 2600; i++) {
+      const v = Math.random();
+      t.fillStyle = v > .5 ? `rgba(255,255,255,${(v - .5) * .09})` : `rgba(0,0,40,${v * .14})`;
+      t.fillRect(Math.random() * 180, Math.random() * 180, 1 + Math.random() * 3, 1);
+    }
+  })();
+
+  function ground() {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = ctx.createPattern(tile, 'repeat');
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  function resize() {
+    const nw = cv.clientWidth, nh = cv.clientHeight;
+    if (nw === W && Math.abs(nh - H) < 120 && W) return; // мобильная адресная строка не должна стирать картину
+    W = nw; H = nh;
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    brushW = Math.max(70, Math.min(170, W * .095));
+    brushEl.style.setProperty('--bs', brushW + 'px');
+    ground();
+    if (started) autoPaint(true);
+  }
+
+  // плоская кисть: щетинки разнесены вдоль наклона, у каждой своя плотность
+  function makeBrush(w) {
+    const n = Math.round(w / 2.6), b = [];
+    for (let i = 0; i < n; i++) {
+      const o = (i / (n - 1) - .5) * w;
+      b.push({ o, a: .45 + Math.random() * .55, lw: 1.5 + Math.random() * 4.5, dry: Math.random() });
+    }
+    return { b, load: 1, w };
+  }
+
+  function strokeSeg(br, x1, y1, x2, y2) {
+    const dist = Math.hypot(x2 - x1, y2 - y1);
+    br.load = Math.max(.12, br.load - dist / 2600); // краска на кисти заканчивается — мазок становится сухим
+    const cos = Math.cos(ANGLE), sin = Math.sin(ANGLE);
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.lineCap = 'round';
+    for (const s of br.b) {
+      if (s.dry > br.load + .25) continue;
+      const ox = cos * s.o, oy = sin * s.o;
+      ctx.globalAlpha = s.a * Math.min(1, br.load + .35);
+      ctx.lineWidth = s.lw;
+      ctx.beginPath();
+      ctx.moveTo(x1 + ox, y1 + oy);
+      ctx.lineTo(x2 + ox, y2 + oy);
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function dab(x, y, r) {
+    ctx.globalCompositeOperation = 'destination-out';
+    for (let i = 0; i < 70; i++) {
+      const a = Math.random() * Math.PI * 2, d = Math.pow(Math.random(), .7) * r;
+      ctx.globalAlpha = .25 + Math.random() * .6;
+      ctx.beginPath();
+      ctx.arc(x + Math.cos(a) * d, y + Math.sin(a) * d * .8, 2 + Math.random() * r * .18, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  // пользовательские мазки
+  let cur = null, last = null, touched = false, started = false;
+  function local(e) { const r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; }
+  function touch() { if (!touched) { touched = true; hero.classList.add('is-touched'); } }
+
+  cv.addEventListener('pointerenter', () => brushEl.classList.add('is-on'));
+  cv.addEventListener('pointerleave', () => { brushEl.classList.remove('is-on'); cur = null; });
+  cv.addEventListener('pointermove', e => {
+    brushEl.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0) rotate(18deg) scaleX(.3)`;
+    const p = local(e);
+    if (!cur || !last) { cur = makeBrush(brushW); last = p; return; }
+    strokeSeg(cur, last.x, last.y, p.x, p.y);
+    last = p;
+    touch();
+    clearTimeout(cur.t); const c = cur; cur.t = setTimeout(() => { if (cur === c) cur.load = 1; }, 450);
+  }, { passive: true });
+  cv.addEventListener('pointerdown', e => { const p = local(e); dab(p.x, p.y, brushW * .55); cur = makeBrush(brushW); last = p; touch(); });
+  cv.addEventListener('pointerup', () => { if (cur) cur.load = 1; });
+
+  // первые мазки сами — чтобы холст сразу показал, что под ним
+  const PATHS = [
+    [[.30, .30], [.42, .25], [.52, .30], [.62, .26]],
+    [[.22, .44], [.38, .40], [.54, .46], [.70, .41], [.86, .47], [1.04, .43]],
+    [[.48, .58], [.62, .54], [.76, .60], [.90, .56], [1.04, .60]],
+    [[.66, .73], [.78, .70], [.90, .75], [1.04, .71]]
+  ];
+  const PATHS_M = [
+    [[-.05, .20], [.3, .16], [.65, .21], [1.05, .17]],
+    [[-.05, .31], [.4, .27], [.8, .32], [1.05, .29]]
+  ];
+  function pts(path) { return path.map(([x, y]) => ({ x: x * W, y: y * H })); }
+  function autoPaint(instant) {
+    const paths = (W < 760 ? PATHS_M : PATHS).map(pts);
+    paths.forEach((P, k) => {
+      const br = makeBrush(brushW * (k === 1 ? 1.3 : 1.05));
+      br.load = 1.6; // перегрузка, чтобы первые мазки были сочными
+      const seg = [];
+      for (let i = 0; i < P.length - 1; i++) {
+        for (let t = 0; t < 1; t += .04) {
+          const a = P[i], b = P[i + 1];
+          seg.push({ x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t + Math.sin(t * Math.PI) * 18 });
+        }
+      }
+      if (instant) { for (let i = 1; i < seg.length; i++) strokeSeg(br, seg[i - 1].x, seg[i - 1].y, seg[i].x, seg[i].y); return; }
+      // по времени, а не по кадрам: на слабом телефоне мазок дорисуется так же за ~0,9 с
+      let i = 1, t0 = 0; const delay = 300 + k * 300, DUR = 900;
+      setTimeout(function step(now) {
+        if (!t0) t0 = performance.now();
+        const end = Math.min(seg.length, Math.ceil(seg.length * (performance.now() - t0) / DUR) + 1);
+        for (; i < end; i++) strokeSeg(br, seg[i - 1].x, seg[i - 1].y, seg[i].x, seg[i].y);
+        if (i < seg.length) requestAnimationFrame(step);
+      }, delay);
+    });
+  }
+
+  resize();
+  window.addEventListener('resize', () => { clearTimeout(resize.t); resize.t = setTimeout(resize, 150); });
+  const go = () => { started = true; autoPaint(!MOTION); };
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); else go();
+
+  /* ---------- шапка ---------- */
+  const nav = document.getElementById('nav');
+  const burger = document.getElementById('burger');
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('is-open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  let lastY = 0;
+  function onScroll(y) {
+    const pastHero = y > hero.offsetHeight - 80;
+    nav.classList.toggle('is-solid', pastHero);
+    nav.classList.toggle('is-hidden', pastHero && y > lastY + 4 && !nav.classList.contains('is-open'));
+    if (y < lastY - 4) nav.classList.remove('is-hidden');
+    lastY = y;
+  }
+
+  /* ---------- до/после ---------- */
+  const ba = document.getElementById('ba');
+  const baRange = document.getElementById('baRange');
+  const setBA = v => ba.style.setProperty('--p', v + '%');
+  baRange.addEventListener('input', () => setBA(baRange.value));
+  const knob = document.createElement('span');
+  knob.className = 'ba__knob';
+  knob.innerHTML = '<svg width="22" height="12" viewBox="0 0 22 12" fill="none"><path d="M6 1L1 6l5 5M16 1l5 5-5 5" stroke="currentColor" stroke-width="1.6"/></svg>';
+  ba.querySelector('.ba__line').appendChild(knob);
+  knob.style.left = '1px';
+
+  /* ---------- направления ---------- */
+  document.querySelectorAll('.dir').forEach(d => {
+    const btn = d.querySelector('.dir__btn');
+    btn.addEventListener('click', () => {
+      const open = !d.classList.contains('is-open');
+      d.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open);
+      if (HAS_GSAP) setTimeout(() => ScrollTrigger.refresh(), 650);
+    });
+  });
+
+  /* ---------- отзывы ---------- */
+  const voices = [...document.querySelectorAll('.voice')];
+  let vi = 0;
+  const vCount = document.getElementById('vCount');
+  function showV(i) {
+    voices[vi].classList.remove('is-on');
+    vi = (i + voices.length) % voices.length;
+    voices[vi].classList.add('is-on');
+    vCount.textContent = (vi + 1) + ' / ' + voices.length;
+  }
+  document.getElementById('vPrev').addEventListener('click', () => showV(vi - 1));
+  document.getElementById('vNext').addEventListener('click', () => showV(vi + 1));
+
+  /* ---------- бегущая строка мест ---------- */
+  const PLACES = ['Горный Алтай', 'Уральские горы', 'Волга', 'Тибет', 'Испания', 'Франция'];
+  const dabSvg = '<svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 26c6-12 18-22 30-20 4 1 2 8-4 12-8 6-18 12-24 10-3-1-3-1-2-2z" fill="currentColor"/></svg>';
+  const row = document.querySelector('.places__row');
+  row.innerHTML = PLACES.map(p => `<span>${p}</span>${dabSvg}`).join('');
+  const places = row.parentElement;
+  places.appendChild(row.cloneNode(true));
+
+  /* ---------- форма → WhatsApp ---------- */
+  document.getElementById('form').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target;
+    const name = f.name.value.trim();
+    if (!name) { f.name.focus(); f.name.style.borderColor = '#FFC21A'; return; }
+    const text = `Здравствуйте! Меня зовут ${name}. Хочу записаться: ${f.what.value}. Где удобно: ${f.city.value}.`;
+    window.open('https://wa.me/79833088883?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  });
+
+  /* ---------- скролл и анимации ---------- */
+  if (!HAS_GSAP) { window.addEventListener('scroll', () => onScroll(scrollY), { passive: true }); return; }
+  gsap.registerPlugin(ScrollTrigger);
+
+  let lenis = null;
+  if (MOTION && window.Lenis) {
+    lenis = window.lenis = new Lenis({ lerp: .09, smoothWheel: true });
+    lenis.on('scroll', ({ scroll }) => { ScrollTrigger.update(); onScroll(scroll); });
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    window.addEventListener('scroll', () => onScroll(scrollY), { passive: true });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    const el = id === '#top' ? document.body : document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    nav.classList.remove('is-open'); burger.setAttribute('aria-expanded', false);
+    if (lenis) lenis.scrollTo(el, { offset: id === '#top' ? 0 : -60 }); else el.scrollIntoView();
+  }));
+
+  // манифест проявляется по словам вслед за скроллом
+  const man = document.getElementById('manifest');
+  man.innerHTML = man.textContent.split(' ').map(w => `<span class="w">${w}</span>`).join(' ');
+  const words = man.querySelectorAll('.w');
+  if (MOTION) {
+    gsap.to(words, { opacity: 1, stagger: .1, ease: 'none', scrollTrigger: { trigger: man, start: 'top 80%', end: 'bottom 45%', scrub: true } });
+  } else gsap.set(words, { opacity: 1 });
+
+  if (!MOTION) { onScroll(scrollY); return; }
+
+  // до/после: шторка сама проезжает один раз, показывая, что её можно тянуть
+  ScrollTrigger.create({
+    trigger: ba, start: 'top 70%', once: true,
+    onEnter: () => {
+      const o = { v: 92 };
+      gsap.to(o, { v: 50, duration: 1.6, ease: 'power3.inOut', onUpdate: () => { setBA(o.v); baRange.value = o.v; } });
+    }
+  });
+
+  // стена работ: горизонтальный проезд на десктопе
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 901px)', () => {
+    const track = document.getElementById('wallTrack');
+    const dist = () => track.scrollWidth - innerWidth;
+    gsap.to(track, {
+      x: () => -dist(), ease: 'none',
+      scrollTrigger: { trigger: '#wall', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .6, invalidateOnRefresh: true, anticipatePin: 1 }
+    });
+  });
+
+  // пленэр: параллакс фото
+  gsap.to('#pleinImg', { yPercent: 14, ease: 'none', scrollTrigger: { trigger: '.plein__hero', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+  // места: строка едет, разгоняется от скорости скролла
+  const rows = places.querySelectorAll('.places__row');
+  let px = 0, boost = 0;
+  gsap.ticker.add(() => {
+    const w = rows[0].offsetWidth;
+    px -= .6 + boost; boost *= .92;
+    if (px <= -w) px += w;
+    rows.forEach(r => r.style.transform = `translate3d(${px}px,0,0)`);
+  });
+  ScrollTrigger.create({ trigger: places, start: 'top bottom', end: 'bottom top', onUpdate: s => { boost = Math.min(18, Math.abs(s.getVelocity()) / 260); } });
+
+  // цифры Татьяны
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const to = +el.dataset.count, o = { v: 0 };
+    gsap.to(o, { v: to, duration: 1.8, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+      onUpdate: () => el.textContent = Math.round(o.v).toLocaleString('ru-RU') });
+  });
+
+  // фото Татьяны сходятся
+  gsap.from('.founder__photos .p1', { yPercent: 12, rotate: -3, ease: 'none', scrollTrigger: { trigger: '.founder', start: 'top bottom', end: 'center center', scrub: true } });
+  gsap.from('.founder__photos .p2', { yPercent: 30, rotate: 4, ease: 'none', scrollTrigger: { trigger: '.founder', start: 'top bottom', end: 'center center', scrub: true } });
+
+  // гигантское слово в подвале
+  gsap.from('.giant', { xPercent: 18, ease: 'none', scrollTrigger: { trigger: '.giant', start: 'top bottom', end: 'bottom bottom', scrub: true } });
+
+  window.addEventListener('load', () => ScrollTrigger.refresh());
+})();
+</script>
+</body>
+</html>
